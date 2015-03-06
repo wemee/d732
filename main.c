@@ -4,12 +4,12 @@
 int search(int *m, int *ary, int left, int right){
     int middle = left+(right-left)/2;
     
-    if (left>middle || right<middle) return 0;
+    if (left>middle || right<middle) return -1;
     
     if (*m > ary[middle]) return search(m, ary, middle+1, right);
     if (*m < ary[middle])return search(m, ary, left, middle-1);
     
-    return middle+1;
+    return middle;
 }
 
 int main(){
@@ -21,7 +21,7 @@ int main(){
         
         for (i=0; i<k; i++){
             scanf("%d", &m);
-            printf("%d\n", search(&m, ary, 0, n-1));
+            printf("%d\n", search(&m, ary, 0, n-1)+1);
         }
         free(ary);
     }
